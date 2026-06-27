@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "qdrant-interpreter-plugin"
 version = "0.1.0"
-description = "A stateful Python interpreter for LangChain/LangGraph agents with integrated Qdrant vector database support"
+description = "Qdrant agent interpreter using the LangChain QuickJS sandbox pattern"
 readme = "qdrant_interpreter_plugin/README.md"
 requires-python = ">=3.10"
 license = {text = "Educational"}
@@ -26,28 +26,30 @@ classifiers = [
 ]
 dependencies = [
     "qdrant-client>=1.9.0",
+    "quickjs-rs>=0.2.0",
 ]
 
 [project.optional-dependencies]
-langchain = [
+agent = [
+    "deepagents[quickjs]>=0.6.0",
+    "langchain-quickjs>=0.3.0",
     "langchain-core>=0.2.0",
-    "langchain-openai>=0.1.0",
     "pydantic>=2.0",
-    "langgraph>=0.2.0",
 ]
 dev = [
     "pytest>=7.0",
     "pytest-asyncio>=0.21",
+    "deepagents[quickjs]>=0.6.0",
+    "langchain-quickjs>=0.3.0",
     "langchain-core>=0.2.0",
     "pydantic>=2.0",
-    "langgraph>=0.2.0",
 ]
 
 [tool.setuptools]
 packages = ["qdrant_interpreter_plugin"]
 
 [project.urls]
-Homepage = "https://github.com/anthropics/qdrant-interpreter-plugin"
-Documentation = "https://github.com/anthropics/qdrant-interpreter-plugin"
-Repository = "https://github.com/anthropics/qdrant-interpreter-plugin.git"
-Issues = "https://github.com/anthropics/qdrant-interpreter-plugin/issues"
+Homepage = "https://github.com/inamdarmihir/qdrant-interpreter"
+Documentation = "https://github.com/inamdarmihir/qdrant-interpreter"
+Repository = "https://github.com/inamdarmihir/qdrant-interpreter.git"
+Issues = "https://github.com/inamdarmihir/qdrant-interpreter/issues"
