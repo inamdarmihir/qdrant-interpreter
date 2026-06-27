@@ -8,3 +8,6 @@ build/
 .venv/
 venv/
 *.egg
+.codegraph/
+tests/
+qdrant_interpreter_plugin/README.md
