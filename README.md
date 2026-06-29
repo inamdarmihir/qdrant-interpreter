@@ -230,7 +230,8 @@ agent = QdrantAgentInterpreter(
     max_result_chars=4_000,         # truncation limit for result/stdout
     capture_console=True,           # collect console.log output
     ptc=None,                       # tool allowlist; None = all 10 tools
-    mode="thread",                  # "thread" | "turn" | "call"
+    snapshot_between_turns=True,    # persist interpreter state across turns
+    subagents=True,                 # expose task() for dynamic subagents
 )
 ```
 

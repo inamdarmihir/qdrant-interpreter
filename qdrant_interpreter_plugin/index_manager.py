@@ -36,15 +36,13 @@ from typing import Any
 
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
-    Distance,
-    OptimizersConfigDiff,
     PayloadSchemaType,
     SparseIndexParams,
     SparseVectorParams,
     VectorParams,
 )
 
-from .param_advisor import CollectionParamAdvice, PriorityHint, UseCaseParamAdvisor
+from .param_advisor import PriorityHint, UseCaseParamAdvisor
 
 
 class QdrantIndexManager:

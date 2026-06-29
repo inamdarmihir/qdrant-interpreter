@@ -7,7 +7,7 @@ name = "qdrant-interpreter-plugin"
 version = "0.1.0"
 description = "Qdrant agent interpreter using the LangChain QuickJS sandbox pattern"
 readme = "qdrant_interpreter_plugin/README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = {text = "Educational"}
 authors = [
     {name = "Anthropic", email = "support@anthropic.com"}
@@ -19,7 +19,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Libraries :: Python Modules",

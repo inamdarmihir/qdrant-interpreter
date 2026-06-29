@@ -64,7 +64,7 @@ Remote Qdrant::
 
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
 from langchain_core.messages import HumanMessage
 from langchain_core.tools import BaseTool
@@ -207,9 +207,10 @@ class QdrantAgentInterpreter:
     ptc:
         Allowlist of Qdrant tool *names* to expose inside the interpreter
         via PTC. ``None`` exposes all 10 tools.
-    mode:
-        REPL state persistence: ``"thread"`` (across turns, default),
-        ``"turn"`` (within a turn only), or ``"call"`` (fresh each eval).
+    snapshot_between_turns:
+        Whether interpreter state snapshots persist across agent turns (default ``True``).
+    subagents:
+        Expose the built-in ``task()`` global for dynamic subagents (default ``True``).
 
     Attributes
     ----------
@@ -234,7 +235,8 @@ class QdrantAgentInterpreter:
         max_result_chars: int = 4_000,
         capture_console: bool = True,
         ptc: list[str] | None = None,
-        mode: Literal["thread", "turn", "call"] = "thread",
+        snapshot_between_turns: bool = True,
+        subagents: bool = True,
     ) -> None:
         from deepagents import create_deep_agent
         from langchain_quickjs import CodeInterpreterMiddleware
@@ -264,7 +266,8 @@ class QdrantAgentInterpreter:
             max_ptc_calls=max_ptc_calls,
             max_result_chars=max_result_chars,
             capture_console=capture_console,
-            mode=mode,
+            snapshot_between_turns=snapshot_between_turns,
+            subagents=subagents,
         )
 
         # Assemble the deep agent
