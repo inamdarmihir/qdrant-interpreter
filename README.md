@@ -1,8 +1,38 @@
 # Qdrant Interpreter Plugin
 
-An implementation of the **interpreter pattern** from the LangChain blog post
-[*"Give Your Agents an Interpreter"*](https://www.langchain.com/blog/give-your-agents-an-interpreter)
-applied to Qdrant vector database management.
+Qdrant vector-database management for Deep Agents — **interpreter skill + LangChain tools + one-liner agent factory**.
+
+Implements the [interpreter pattern](https://www.langchain.com/blog/give-your-agents-an-interpreter) and [interpreter skills](https://www.langchain.com/blog/interpreter-skills) from the LangChain blog:
+the agent writes JavaScript once, batches all Qdrant operations in one `eval` call, and returns only the final result to the model context.
+
+> **Two implementations** — pick whichever fits your stack:
+> - **[TypeScript / JS](./ts-plugin/README.md)** (`qdrant-deepagent` npm package) — recommended, follows the full interpreter-skill pattern
+> - **Python** (below) — `QdrantAgentInterpreter` via `deepagents` + `langchain-quickjs`
+
+---
+
+## TypeScript (recommended)
+
+```bash
+npm install qdrant-deepagent deepagents @langchain/quickjs @langchain/core
+```
+
+```typescript
+import { createQdrantAgent } from "qdrant-deepagent";
+
+const { invoke } = createQdrantAgent({ model: "openai:gpt-4o" });
+const reply = await invoke(
+  "Create a semantic search collection for 500k product descriptions using ada-002"
+);
+```
+
+→ Full docs in [`ts-plugin/README.md`](./ts-plugin/README.md)
+
+---
+
+## Python
+
+The Python implementation of the interpreter pattern applied to Qdrant.
 
 Instead of calling Qdrant tools one-at-a-time (one model round-trip each), the
 agent writes a short JavaScript program and calls the `eval` tool **once**.

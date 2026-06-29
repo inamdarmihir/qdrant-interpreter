@@ -1,0 +1,67 @@
+{
+  "name": "qdrant-deepagent",
+  "version": "0.1.0",
+  "description": "Qdrant vector-database plugin for Deep Agents — interpreter skill + LangChain tools + one-liner agent factory",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "src/skill"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "dev": "tsup --watch",
+    "prepublishOnly": "npm run build && npm run typecheck"
+  },
+  "keywords": [
+    "qdrant",
+    "vector-database",
+    "langchain",
+    "deepagents",
+    "interpreter",
+    "interpreter-skill",
+    "agent",
+    "embeddings",
+    "semantic-search"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@langchain/core": ">=1.0.0",
+    "@langchain/quickjs": ">=0.5.0",
+    "deepagents": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@langchain/core": { "optional": false },
+    "@langchain/quickjs": { "optional": true },
+    "deepagents": { "optional": true }
+  },
+  "dependencies": {
+    "@qdrant/js-client-rest": "^1.18.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@langchain/core": "^1.2.1",
+    "@langchain/quickjs": "^0.5.1",
+    "@types/node": "^26.0.1",
+    "deepagents": "^1.10.5",
+    "tsup": "^8.5.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}

@@ -11,3 +11,5 @@ venv/
 .codegraph/
 tests/
 qdrant_interpreter_plugin/README.md
+dist/
+node_modules/
